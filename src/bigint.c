@@ -99,3 +99,18 @@ void bigint_destroy(BigInt* num) {
 
     free(num);
 }
+
+void bigint_push_front(BigInt* num, short value) {
+    Node* new_node = create_node(value);
+
+    if (num->head == NULL) {
+        num->head = new_node;
+        num->tail = new_node;
+    }else {
+        new_node -> next = num->head;
+        num -> head -> prev = new_node;
+        num -> head = new_node;
+    }
+
+    num -> size++;
+}

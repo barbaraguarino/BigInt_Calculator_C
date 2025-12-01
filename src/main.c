@@ -1,24 +1,23 @@
 #include <stdio.h>
-#include "../include/bigint.h"
+#include "../include/operations.h"
 
 int main() {
-    printf("Teste da BigInt Calculator\n");
+    printf("Teste de Soma\n");
 
-    char valor_gigante[] = "1234567890123456548745154748548754688548487455154478485484487848454848784545487451215454845478901234567890";
+    BigInt* num1 = bigint_create("99999999999999999999");
+    BigInt* num2 = bigint_create("1");
 
-    printf("Criando BigInt com valor: %s\n", valor_gigante);
-    BigInt* num1 = bigint_create(valor_gigante);
+    printf("Numero 1: "); bigint_print(num1);
+    printf("Numero 2: "); bigint_print(num2);
 
-    printf("Resultado armazenado na lista: ");
-    bigint_print(num1);
+    BigInt* resultado = bigint_sum(num1, num2);
 
-    BigInt* num2 = bigint_create("-98765434125445587454874548745877455622145587455874587455121548475454587455848454548475512256225548521");
-    printf("Teste negativo: ");
-    bigint_print(num2);
+    printf("Soma:     ");
+    bigint_print(resultado);
 
     bigint_destroy(num1);
     bigint_destroy(num2);
+    bigint_destroy(resultado);
 
-    printf("Memória liberada. Fim do programa.\n");
     return 0;
 }
