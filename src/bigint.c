@@ -38,7 +38,7 @@ BigInt *bigint_create(const char *value_str) {
     if (value_str[0] == '-') {
         new_bigint -> is_negative = true;
         start_index = 1;
-    }else if (value_str[0] != '+' || value_str[0] == '+') {
+    }else if (value_str[0] == '+') {
         start_index = 1;
     }
 
@@ -47,7 +47,7 @@ BigInt *bigint_create(const char *value_str) {
             continue;
         }
 
-        short digit = value_str[i] - '0';
+        short digit = (short)(value_str[i] - '0');
 
         Node *new_node = create_node(digit);
         if (new_bigint -> head == NULL) {
@@ -62,4 +62,40 @@ BigInt *bigint_create(const char *value_str) {
         new_bigint -> size++;
     }
     return new_bigint;
+}
+
+void bigint_print(const BigInt* num) {
+    if (num == NULL) {
+        printf("Não existe número.\n");
+        return;
+    }
+
+    if (num->is_negative) {
+        printf("-");
+    }
+
+    Node* current = num->head;
+
+    while (current != NULL) {
+        printf("%d", current->digit);
+        current = current->next;
+    }
+
+    printf("\n");
+}
+
+void bigint_destroy(BigInt* num) {
+    if (num == NULL) return;
+
+    Node* current = num->head;
+
+    while (current != NULL) {
+        Node* next_node_backup = current->next;
+
+        free(current);
+
+        current = next_node_backup;
+    }
+
+    free(num);
 }

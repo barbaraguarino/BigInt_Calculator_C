@@ -10,5 +10,5 @@ include_directories(include)
 add_executable(BigInt_Calculator_C
         src/main.c
         src/bigint.c
-        src/operations.c
+        # src/operations.c
 )
