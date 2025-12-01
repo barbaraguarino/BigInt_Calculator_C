@@ -1,7 +1,7 @@
 #ifndef BIGINT_H
 #define BIGINT_H
 
-#include <stdbool.h>
+#include "imports.h"
 
 typedef struct Node {
   short int digit;

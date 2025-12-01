@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "../include/operations.h"
 
 BigInt* bigint_sum(BigInt* a, BigInt* b) {
