@@ -43,7 +43,7 @@ BigInt *bigint_create(const char *value_str) {
     }
 
     for (int i = start_index; value_str[i] != '\0'; i++) {
-        if (isdigit(value_str[i])) {
+        if (!isdigit(value_str[i])) {
             continue;
         }
 
